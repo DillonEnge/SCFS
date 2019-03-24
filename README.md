@@ -7,7 +7,3 @@
 * Input basic statistics for human birth and growth
 * Create a system for characters to "work on" their unwanted personality traits if applicable from core values
 * Create a processing engine to interprete life events and how they impact a characters development
-### Base values:
-
-### Email:
-* jacobmcrandall@gmail.com
