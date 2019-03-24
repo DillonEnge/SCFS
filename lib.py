@@ -123,53 +123,28 @@ def iterate_value_generation(trait_tree, traits, subtraits = [], iteration = -1)
     else:
         selected_traits = subtraits
         percentage_remaining = int(trait_tree['traits'][traits[iteration]]['value'] * 100)
-        print(percentage_remaining)
 
     for i in range(len(selected_traits)):
-        if i == len(selected_traits) - 1:
-            if len(subtraits) == 0:
-                trait_tree['traits'][traits[i]]['value'] = float(percentage_remaining)/100
-                iterate_value_generation(trait_tree, traits, get_and_shuffle_trait_tree(trait_tree['traits'][traits[i]]['subtraits']), i)
-            else:
-                trait_tree['traits'][traits[iteration]]['subtraits'][subtraits[i]] = float(percentage_remaining)/100
-        elif i == 0:
-            random_percentage = 0
+        random_percentage = 0
 
+        if i == len(selected_traits) - 1:
+            random_percentage = percentage_remaining
+        elif i == 0:
             if int(percentage_remaining/4) != 0 or int(percentage_remaining/2) != 0:
                 random_percentage = random.randrange(int(percentage_remaining/4), int(percentage_remaining/2))
-
-            if len(subtraits) == 0:
-                trait_tree['traits'][traits[i]]['value'] = float(random_percentage)/100
-                iterate_value_generation(trait_tree, traits, get_and_shuffle_trait_tree(trait_tree['traits'][traits[i]]['subtraits']), i)
-            else:
-                trait_tree['traits'][traits[iteration]]['subtraits'][subtraits[i]] = float(random_percentage)/100
-
-            percentage_remaining = percentage_remaining - random_percentage
         elif i == 1:
-            random_percentage = 0
-
             if int(percentage_remaining/2) != 0:
                 random_percentage = random.randrange(int(percentage_remaining/2), percentage_remaining)
-
-            if len(subtraits) == 0:
-                trait_tree['traits'][traits[i]]['value'] = float(random_percentage)/100
-                iterate_value_generation(trait_tree, traits, get_and_shuffle_trait_tree(trait_tree['traits'][traits[i]]['subtraits']), i)
-            else:
-                trait_tree['traits'][traits[iteration]]['subtraits'][subtraits[i]] = float(random_percentage)/100
-
-            percentage_remaining = percentage_remaining - random_percentage
         else:
-            random_percentage = 0
-
             if percentage_remaining != 0:
                 random_percentage = random.randrange(0, percentage_remaining)
 
-            if len(subtraits) == 0:
-                trait_tree['traits'][traits[i]]['value'] = float(random_percentage)/100
-                iterate_value_generation(trait_tree, traits, get_and_shuffle_trait_tree(trait_tree['traits'][traits[i]]['subtraits']), i)
-            else:
-                trait_tree['traits'][traits[iteration]]['subtraits'][subtraits[i]] = float(random_percentage)/100
+        if len(subtraits) == 0:
+            trait_tree['traits'][traits[i]]['value'] = float(random_percentage)/100
+            iterate_value_generation(trait_tree, traits, get_and_shuffle_trait_tree(trait_tree['traits'][traits[i]]['subtraits']), i)
+        else:
+            trait_tree['traits'][traits[iteration]]['subtraits'][subtraits[i]] = float(random_percentage)/100
 
-            percentage_remaining = percentage_remaining - random_percentage
+        percentage_remaining = percentage_remaining - random_percentage
 
     write_trait_tree(trait_tree)
