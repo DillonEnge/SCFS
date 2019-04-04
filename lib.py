@@ -3,9 +3,11 @@
 import json, random
 from scipy.stats import truncnorm
 
+JSON_FILE_SUFFIX = 'trait_tree.json'
+
 # Writes the initial default trait_tree object to a json file
 def generate_initial_json():
-    with open('trait_tree.json', 'w') as outfile:
+    with open(JSON_FILE_SUFFIX, 'w') as outfile:
         json.dump(
             {
                 'value': 0,
@@ -72,14 +74,14 @@ def generate_initial_json():
 # Gets the trait_tree object from a json file and returns it
 def get_trait_tree():
     trait_tree = {}
-    with open('trait_tree.json') as trait_tree_file:
+    with open(JSON_FILE_SUFFIX) as trait_tree_file:
         trait_tree = json.load(trait_tree_file)
 
     return trait_tree
 
 # Writes the trait_tree object it receives to a json file
 def write_trait_tree(trait_tree):
-    with open('trait_tree.json', 'w') as outfile:
+    with open(JSON_FILE_SUFFIX, 'w') as outfile:
         json.dump(trait_tree, outfile, indent=4)
 
 # Will eventually take 'age' as a param to signify max percentage remaining
