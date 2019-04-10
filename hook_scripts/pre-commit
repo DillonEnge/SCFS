@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "pre-commit started"
+. venv/bin/activate
+python scripts/generate_todo.py
+deactivate
+git add README.md
+echo "pre-commit finished"

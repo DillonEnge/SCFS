@@ -4,5 +4,5 @@
 from lib import fill_random_sub_values
 
 # Generates the inital birth statistics of a character with optional user override on specific traits
-def generate_birth_statistics(trait_levels=[]):
-    fill_random_sub_values()
+def initialize_character(name):
+    fill_random_sub_values(name)

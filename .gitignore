@@ -1,5 +1,5 @@
 .vscode
 __pycache__
-trait_tree.json
+*.json
 venv
 *.code-workspace
