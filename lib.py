@@ -3,76 +3,7 @@
 import json, random, os
 from scipy.stats import truncnorm
 
-# Writes the initial default trait_tree object to a json file
-def generate_initial_json(name):
-    if not os.path.isdir(os.getcwd() + '/trait_trees'):
-        os.mkdir(os.getcwd() + '/trait_trees')
-    with open('trait_trees/' + name + '_trait_tree.json', 'w') as outfile:
-        json.dump(
-            {
-                'name': name,
-                'value': 1,
-                'traits':
-                    {
-                        'agreeableness': {
-                            'value': 0,
-                            'subtraits': {
-                                'trust': 0,
-                                'morality': 0,
-                                'altruism': 0,
-                                'cooperation': 0,
-                                'modesty': 0,
-                                'sympathy': 0
-                            }
-                        },
-                        'conscientiousness': {
-                            'value': 0,
-                            'subtraits': {
-                                'self-efficacy': 0,
-                                'orderliness': 0,
-                                'dutifulness': 0,
-                                'achievement-striving': 0,
-                                'self-discipline': 0,
-                                'cautiousness': 0
-                            }
-                        },
-                        'extraversion': {
-                            'value': 0,
-                            'subtraits': {
-                                'friendliness': 0,
-                                'gregariousness': 0,
-                                'assertiveness': 0,
-                                'activity level': 0,
-                                'excitement-seeking': 0,
-                                'cheerfulness': 0
-                            }
-                        },
-                        'neuroticism': {
-                            'value': 0,
-                            'subtraits': {
-                                'Anxiety': 0,
-                                'Anger': 0,
-                                'Depression': 0,
-                                'Self-consciousness': 0,
-                                'Immoderation': 0,
-                                'Vulnerability': 0
-                            }
-                        },
-                        'openness': {
-                            'value': 0,
-                            'subtraits': {
-                                'imagination': 0,
-                                'artistic interests': 0,
-                                'emotionality': 0,
-                                'adventurousness': 0,
-                                'intellect': 0,
-                                'liberalism': 0
-                            }
-                        }
-                }
-            }, outfile, indent=4)
-
-#TODO Temporary home for this class, will need to be refactored later.
+#TODO Refactor TraitTreeModifier class, possibly move it.
 class TraitTreeModifier:
     def __init__(self, name):
         self.name = name
@@ -159,7 +90,7 @@ class TraitTreeModifier:
         with open('trait_trees/' + self.name + '_trait_tree.json', 'w') as outfile:
             json.dump(trait_tree, outfile, indent=4)
 
-# Will eventually take 'age' as a param to signify max percentage remaining
+#TODO Need to allow fill_random_sub_values to accept age as a variable
 def fill_random_sub_values(name):
     trait_tree_modifier = TraitTreeModifier(name)
     trait_tree_modifier.generate_initial_json()
