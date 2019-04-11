@@ -10,5 +10,5 @@ class BaseTimeline:
  
     def step(self, state):
         for event in self.events:
-            event.step(self.instance, state)
+            event.step(state)
         self.instance += 1

@@ -1,3 +1,4 @@
 class BaseEvent:
-    def step(instance, state):
+    @staticmethod
+    def step(state):
         print("Taking base step")
