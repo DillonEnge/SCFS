@@ -17,6 +17,7 @@ class TraitTreeModifier:
             json.dump(
                 {
                     'name': self.name,
+                    'age': 0,
                     'value': 1,
                     'traits':
                         {
@@ -86,10 +87,12 @@ class TraitTreeModifier:
 
         return trait_tree
 
+    # TODO Re-write this to update the value summation per write
     # Writes the trait_tree object it receives to a json file
     def write_trait_tree(self, trait_tree):
         with open('trait_trees/' + self.name + '_trait_tree.json', 'w') as outfile:
             json.dump(trait_tree, outfile, indent=4)
+
 
 #TODO Need to allow fill_random_sub_values to accept age as a variable
 def fill_random_sub_values(name):
@@ -97,8 +100,9 @@ def fill_random_sub_values(name):
     trait_tree_modifier.generate_initial_json()
     trait_tree = trait_tree_modifier.get_trait_tree()
     traits = get_and_shuffle_trait_tree(trait_tree['traits'])
-
     iterate_value_generation(trait_tree, traits, trait_tree_modifier=trait_tree_modifier, name=name)
+
+    return trait_tree_modifier
 
 # Will eventually be used in the context of physical/mental attribute generation that can be estimated using a normally distributed model
 # Example usage:

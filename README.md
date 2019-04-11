@@ -1,9 +1,13 @@
 # Project Goal:
 * Create a Character Generator that creates personality traits and values and process how they would interact and grow.
 ## Todo:
+* ODO Create abstract individual generator (intra_personal.py, L9)
+* ODO Test Todo (main.py, L17)
+* ODO Dynamically load functions / events / timelines etc. based on configs (main.py, L10)
+* ODO: Create abstract individual generator (intra_personal.py, L9)
 * Start creating a mecro_world class capable of creating mecro world simulation (mecro_world.py, L1)
 * Start creating a micro_world class capable of creating micro world simulation (micro_world.py, L1)
-* Need to allow fill_random_sub_values to accept age as a variable (lib.py, L94)
+* Need to allow fill_random_sub_values to accept age as a variable (lib.py, L97)
 * Refactor TraitTreeModifier class, possibly move it. (lib.py, L7)
 * Start creating a macro_world class capable of creating macro world simulation (macro_world.py, L1)
 ## Subgoals:
