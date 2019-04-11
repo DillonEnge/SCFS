@@ -14,8 +14,16 @@
 * Create a system for characters to "work on" their unwanted personality traits if applicable from core values
 * Create a processing engine to interprete life events and how they impact a characters development
 # Setup:
+* First replace {your token here} with your provided Trello token
+* Next execute the following batch of commands:
 ```
 virtualenv venv -p python3
+```
+```
+. venv/bin/activate
+```
+```
+pip install -r requirements.txt
 ```
 ```
 . hook_scripts/setup.py
