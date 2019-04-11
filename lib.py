@@ -4,6 +4,7 @@ import json, random, os
 from scipy.stats import truncnorm
 
 #TODO Refactor TraitTreeModifier class, possibly move it.
+# This should potentially be moved to it's own class in the future.
 class TraitTreeModifier:
     def __init__(self, name):
         self.name = name

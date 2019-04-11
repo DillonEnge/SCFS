@@ -2,7 +2,8 @@
 
 echo "pre-commit started"
 . venv/bin/activate
-python scripts/generate_todo.py
+token="{your token here}"
+python scripts/generate_todo.py $token
 deactivate
 git add README.md
 echo "pre-commit finished"
